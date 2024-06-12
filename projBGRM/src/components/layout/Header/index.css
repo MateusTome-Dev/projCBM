@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    transition: 0.2s linear;
+}
+.header{width: 100%;
+    display: flex;
+    background-color: #C40C0C;
+    padding: 1% 0% 1% 0%;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+}
+.titleContainer{
+    text-align: center;
+    width: 50%;
+    display: flex;
+}
+
+.logo{width: 100px;
+border-radius: 50%;
+border: 4px solid white;
+margin-right: 10px;
+}
+.textHeader{
+color: white;
+text-align: justify;
+}
+.textHeader span{color: black;
+font-weight: 500;
+font-size: 18px;}
+.textHeader span.sp{
+    align-items: center;
+    color: black;
+    font-weight: 500;
+font-size: 14px;
+}
+.listContainer{
+    width: 40%;
+}
+.listContainer ul{
+    justify-content: space-around;
+    width: 100%;
+    list-style-type: none;
+    display: flex;
+    color: white;
+}
+.listContainer ul .root{
+    margin: 10px;
+    color: white;
+    text-decoration: none;
+}
+.listContainer ul .root:hover{
+    border-bottom: 1px solid rgb(255, 255, 255);
+    color: rgb(186, 186, 186);
+}
+.listContainer ul .root{
+    font-weight: 600;
+font-size: 18px;
+}
+.listContainer ul li a img{
+    width: 26px;
+    border-radius: 3px;
+}
+@media(max-width:736px){
+    .listContainer ul{
+        border-top: 2px solid white;
+        border-bottom: 0px;
+    }
+    .listContainer ul li a img{
+        display: none;
+    }
+    .br{
+        display: none;
+    }
+    .logo{
+        display: none;
+    }
+    .header{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .textHeader{
+        text-align: center;
+        width: 100%;
+    }
+    .titleContainer{
+        
+        width: 32%;
+       
+    }
+    .listContainer{
+        width: 60%;
+    }
+}
+@media(max-width:622px){
+    .titleContainer{
+        width: 36%;
+    }
+}
+@media(max-width:574px){
+    .titleContainer{
+        width: 40%;
+    }
+}
+@media(max-width:500px){
+    .titleContainer{
+        width: 47%;
+    }
+}
+@media(max-width:424px){
+    .titleContainer{
+        width: 56%;
+    }
+}
+

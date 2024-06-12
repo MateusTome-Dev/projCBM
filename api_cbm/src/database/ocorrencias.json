@@ -1,0 +1,51 @@
+[
+  {
+    "datetime": "10/05/2024",
+    "natureza": "teste",
+    "grupo": "teste",
+    "subgrupo": "test",
+    "bairro": "test",
+    "logradouro": "test",
+    "id": 1
+  },
+  {
+    "datetime": "10/05/2024",
+    "natureza": "teste",
+    "grupo": "teste",
+    "subgrupo": "test",
+    "bairro": "test",
+    "logradouro": "test",
+    "id": 2
+  },
+  {
+    "descricao": "a",
+    "natureza": "a",
+    "grupo": "a",
+    "subgrupo": "wwww",
+    "bairro": "a",
+    "logradouro": "a",
+    "dateTime": "2024-06-12T14:45",
+    "id": 4,
+    "datetime": "2024-06-12T14:50"
+  },
+  {
+    "descricao": "a",
+    "natureza": "a",
+    "grupo": "a",
+    "subgrupo": "wwww",
+    "bairro": "a",
+    "logradouro": "a",
+    "datetime": "2024-06-12T14:45",
+    "id": 5
+  },
+  {
+    "descricao": "a",
+    "natureza": "a",
+    "grupo": "a",
+    "subgrupo": "wwww",
+    "bairro": "a",
+    "logradouro": "ana",
+    "datetime": "2024-06-12T14:45",
+    "id": 6
+  }
+]

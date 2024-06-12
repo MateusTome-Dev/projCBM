@@ -1,0 +1,37 @@
+[
+  {
+    "email": "user@gmail.com",
+    "password": "$2b$05$qgnIaDeHMac8hkLyuNXAMu6sZnrqSj/UC6aaVF4Q1H/ii2H7BqImC",
+    "id": 1
+  },
+  {
+    "email": "a@gmail.com",
+    "password": "$2b$05$5RXOmBba2XeuHkEKffVLx.RRASq/EQiu27yYIvZoxsXeAXkS8rRCy",
+    "id": 2
+  },
+  {
+    "email": "fefa@gmail.com",
+    "password": "$2b$05$WvFcWJypRQ1IBD7L7JAOGOMgkP.LZj/vzTycjkYd8whp3dLR.R6X2",
+    "id": 3
+  },
+  {
+    "email": "rafa10@gmail.com",
+    "password": "$2b$05$ayPGirYT32Mg5elD.pyDXeIcceIXdnjIqRuaPOvtLP5zznmJ6UJv2",
+    "id": 4
+  },
+  {
+    "email": "user@gmail.com",
+    "password": "$2b$05$JvkdNIhLOmhJdLSJlgsx6O2eib8v3ShYgQE1PHLJi7eA45NzXZdvK",
+    "id": 5
+  },
+  {
+    "email": "vaiirsim@gmail.com",
+    "password": "$2b$05$g5EpWox1Ak2jlQI5ei9d7.00m/DZo2Fd4jHpKse.uSFqLp2frDE36",
+    "id": 6
+  },
+  {
+    "email": "rafa100@gmail.com",
+    "password": "$2b$05$6fkSYAR1gw3Xi3ppj/BqRevl4kcFXqFktMxOmQKVTA47fomrRRGqC",
+    "id": 7
+  }
+]

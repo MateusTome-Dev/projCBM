@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    transition: 0.2s linear;
+}
+.headerHome{width: 100%;
+    display: flex;
+    background-color: #C40C0C;
+    padding: 1% 0% 1% 0%;
+    justify-content: center;
+    align-items: center;
+}
+.titleContainerHome{
+    text-align: center;
+    width: 50%;
+    display: flex;
+}
+
+.logoHome{width: 100px;
+border-radius: 50%;
+border: 4px solid white;
+margin-right: 10px;
+}
+.textHeaderHome{
+color: white;
+text-align: justify;
+}
+.textHeaderHome span{color: black;
+font-weight: 500;
+font-size: 18px;}
+.textHeaderHome span.sp{
+    align-items: center;
+    color: black;
+    font-weight: 500;
+font-size: 14px;
+}
+.listContainerHome{
+    width: 40%;
+}
+.listContainerHome ul{
+    justify-content: space-around;
+    width: 100%;
+    list-style-type: none;
+    display: flex;
+    border-bottom: 2px solid white;
+    color: white;
+}
+.listContainerHome ul .root{
+    margin: 10px;
+    color: white;
+    text-decoration: none;
+}
+.listContainerHome ul .root:hover{
+    border-bottom: 1px solid rgb(255, 255, 255);
+    color: rgb(186, 186, 186);
+}
+.listContainerHome ul .root{
+    font-weight: 600;
+font-size: 18px;
+}
+@media(max-width:736px){
+    .brHome{
+        display: none;
+    }
+    .logoHome{
+        display: none;
+    }
+    .headerHome{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .textHeaderHome{
+        text-align: center;
+        width: 100%;
+    }
+    .titleContainerHome{
+        
+        width: 35%;
+       
+    }
+    .listContainerHome{
+        width: 60%;
+    }
+}
+@media(max-width:574px){
+    .titleContainerHome{
+        width: 40%;
+    }
+}
+@media(max-width:500px){
+    .titleContainerHome{
+        width: 47%;
+    }
+}
+@media(max-width:424px){
+    .titleContainerHome{
+        width: 56%;
+    }
+}
+
