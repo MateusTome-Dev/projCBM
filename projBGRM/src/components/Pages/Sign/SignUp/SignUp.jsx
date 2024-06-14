@@ -2,6 +2,7 @@ import "./index.css";
 import Logo from "/public/img/logo.png";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 function SignIn() {
   // Declara o estado formData para armazenar os dados do formulário
   const [formData, setFormData] = useState({
@@ -39,7 +40,7 @@ function SignIn() {
           password: "",
           codigoHash: "", // Reinicia os campos do formulário
         });
-        alert("Cadastro Efetuado!!"); // Exibe um alerta indicando sucesso no cadastro
+        toast.success("Cadastro Efetuado!!"); // Exibe um alerta indicando sucesso no cadastro
       })
       .catch((error) => {
         console.log("ERROR: ", error); // Exibe erros no console

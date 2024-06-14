@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./index.css";
-
+import { toast } from "react-toastify";
 function Form() {
   // Declara o estado formData para armazenar os dados do formulário
   const [formData, setFormData] = useState({
@@ -25,14 +25,14 @@ function Form() {
     
     if(formData.datetime === '' || formData.bairro === '' || formData.descricao === ''|| formData.natureza === '' 
       || formData.grupo === '' || formData.subgrupo === '' || formData.logradouro === ''){
-        alert('Preencha todos os campos')
+        toast.info('Preencha todos os campos')
         return
       }
 
 
 
     // Faz uma requisição POST para a URL de ocorrências
-    fetch("http://localhost:3000/ocorrencias", {
+    fetch("http://localhost:3000/ocorrencia", {
       method: "POST", // Define o método HTTP como POST
       headers: {
         "Content-Type": "application/json", // Define o tipo de conteúdo como JSON
@@ -42,7 +42,7 @@ function Form() {
       .then((response) => response.json()) // Converte a resposta para JSON
       .then((data) => {
         console.log(data); // Exibe a resposta no console
-        alert("Ocorrência registrada com sucesso!"); // Exibe um alerta indicando sucesso no registro
+        toast.success("Ocorrência registrada com sucesso!"); // Exibe um alerta indicando sucesso no registro
         // Reinicia os campos do formulário
         setFormData({
           descricao: "",
@@ -56,9 +56,9 @@ function Form() {
       })
       .catch((error) => {
         console.error("Erro ao registrar ocorrência:", error); // Exibe o erro no console
-        alert(
+        toast.error(
           "Ocorreu um erro ao registrar a ocorrência. Por favor, tente novamente."
-        ); // Exibe um alerta em caso de erro
+        );
       });
   };
 
@@ -115,8 +115,8 @@ function Form() {
           <input
             type="datetime-local"
             id="datetime"
-            name="dateTime"
-            value={formData.dateTime}
+            name="datetime"
+            value={formData.datetime}
             onChange={handleChange}
             className="inputRegister"
           />

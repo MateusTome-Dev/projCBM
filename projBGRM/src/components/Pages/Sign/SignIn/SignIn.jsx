@@ -3,6 +3,7 @@ import Logo from "/public/img/logo.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./index.css";
+import { toast } from "react-toastify";
 
 function SignIn() {
   // Declara o estado formData para armazenar os dados do formulário
@@ -23,7 +24,7 @@ function SignIn() {
 
     // Verifica se os campos email e password estão preenchidos
     if (formData.email === '' || formData.password === '') {
-      alert('Preencha os campos'); // Exibe um alerta se algum campo estiver vazio
+      toast.info('Preencha os campos'); // Exibe um alerta se algum campo estiver vazio
       return; // Sai da função se algum campo estiver vazio
     }
 
@@ -35,7 +36,12 @@ function SignIn() {
       },
       body: JSON.stringify(formData), // Converte os dados do formulário para JSON
     })
-      .then((response) => response.json()) // Converte a resposta para JSON
+      .then((response) => {
+        if(response.status === 401){
+          toast.error('Senha ou Email incorreto')
+        }
+        return  response.json();
+      }) // Converte a resposta para JSON
       .then((data) => {
         // Verifica se a resposta contém um token
         if (data.token) {
@@ -43,12 +49,12 @@ function SignIn() {
           console.log(localStorage.getItem('token')); // Exibe o token no console
           window.location.href = `/instrucoes`; // Redireciona para a página de instruções
         } else {
-          alert('Erro ao logar!'); // Exibe um alerta se não houver token na resposta
+          toast.error('Acesso Negado'); // Exibe um alerta se não houver token na resposta
         }
       })
       .catch((error) => {
         console.error("Erro ao fazer login:", error); // Exibe o erro no console
-        alert("Erro ao fazer login. Por favor, tente novamente."); // Exibe um alerta em caso de erro
+        toast.error("Erro ao fazer login. Por favor, tente novamente."); // Exibe um alerta em caso de erro
       });
   };
 

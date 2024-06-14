@@ -33,5 +33,30 @@
     "email": "rafa100@gmail.com",
     "password": "$2b$05$6fkSYAR1gw3Xi3ppj/BqRevl4kcFXqFktMxOmQKVTA47fomrRRGqC",
     "id": 7
+  },
+  {
+    "email": "ana2@gmail.com",
+    "password": "$2b$05$zllp.kHAWgylUNaBvmZwbuMIFYygfFDxvHcsmkjgUrDYwwK2/aelm",
+    "id": 8
+  },
+  {
+    "email": "bea@gmail.com",
+    "password": "$2b$05$.H.MCVRTuFv1Al4e87Q5U.rN7/iIuJegTEUCupuPN9bprt8Es.x5q",
+    "id": 9
+  },
+  {
+    "email": "bea2@gmail.com",
+    "password": "$2b$05$TmL2yo7amu9uB26pzwSkve/uY051sE2kxOCPL3s88F/2DBIIcuYvm",
+    "id": 10
+  },
+  {
+    "email": "arthur@gmail.com",
+    "password": "$2b$05$kIDvoe9ClN0LjC7EcNi/DeN8CL.M6tafCprUvgI3lJ4MVf3YmsuqG",
+    "id": 11
+  },
+  {
+    "email": "123@gmail.com",
+    "password": "$2b$05$DM0wWG.c7nfx7dgrtENOvu/74iEbAi1yquI3weFvGE1HBQBnZ1xVq",
+    "id": 12
   }
 ]

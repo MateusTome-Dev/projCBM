@@ -1,8 +1,13 @@
 import { useParams } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import "./index.css";
-
+import { toast } from "react-toastify";
 function Editar() {
+
+
+
+
+
   const params = useParams();
   const [formData, setFormData] = useState({
     descricao: "",
@@ -10,7 +15,8 @@ function Editar() {
     grupo: "",
     bairro: "",
     logradouro: "",
-    datetime: ""
+    datetime: "",
+    subgrupo: "",
   });
 
   const handleChange = (event) => {
@@ -19,20 +25,22 @@ function Editar() {
   };
 
   const handleSubmit = (event) => {
-
     event.preventDefault();
 
+    if (
+      formData.datetime === "" ||
+      formData.bairro === "" ||
+      formData.descricao === "" ||
+      formData.natureza === "" ||
+      formData.grupo === "" ||
+      formData.subgrupo === "" ||
+      formData.logradouro === ""
+    ) {
+      toast.info("Preencha os Campos");
+      return;
+    }
 
     
-    if(formData.datetime === '' || formData.bairro === '' || formData.descricao === ''|| formData.natureza === '' 
-      || formData.grupo === '' || formData.subgrupo === '' || formData.logradouro === ''){
-        alert('Preencha os Campos')
-        return
-      }
-
-
-
-
     fetch(`http://localhost:3000/ocorrencia/${params.id}`, {
       method: "PUT",
       headers: {
@@ -41,24 +49,56 @@ function Editar() {
       body: JSON.stringify(formData),
     })
       .then((result) => {
-        result.json()
-        if(!result.ok) {
-        console.log(error);
+        result.json();
+        if (result.status === 404) {
+          toast.error("Ocorrência Inexistente!");
+        } else if (result.ok) {
+          toast.success("Ocorrência Editada com Sucesso!");
+        } else {
+          toast.error("Erro ao Editar a ocorrência!");
         }
-      }
-        
-     
-    
-    )
+      })
       .then((data) => {
         console.log(data);
-        alert("Ocorrência editada com sucesso!");
       })
       .catch((error) => {
         console.error("Erro:", error);
-        alert("Erro ao editar ocorrência");
+        toast.error("Erro ao editar ocorrência");
       });
+
+   
+ 
+  
+
+
   };
+
+
+  const [occ, setOcc] = useState([]);
+
+  // Usa o hook useEffect para buscar as ocorrências ao montar o componente
+  useEffect(() => {
+    fetchOcorrencias(); // Chama a função para buscar ocorrências
+  }, []);
+
+  // Função para buscar as ocorrências do servidor
+  function fetchOcorrencias() {
+    fetch(`http://localhost:3000/ocorrencia/${params.id}`, {
+      method: "GET", // Define o método HTTP como GET
+      headers: {
+        "Content-Type": "application/json", // Define o tipo de conteúdo como JSON
+      },
+    })
+      .then((result) => result.json()) // Converte a resposta para JSON
+      .then((data) => {
+        setOcc(data); // Define o estado occ com os dados recebidos
+      })
+      .catch((erro) => console.error("Erro ao buscar dados:", erro)); // Exibe erros no console
+  }
+
+
+
+
 
   return (
     <section className="editarContainer">
@@ -67,7 +107,12 @@ function Editar() {
         <br className="brTitleEdit" /> ocorrências
       </h1>
       <div className="containerFormEdit">
-        <form onSubmit={handleSubmit}  method="POST" data-form className="formEditar">
+        <form
+          onSubmit={handleSubmit}
+          method="POST"
+          data-form
+          className="formEditar"
+        >
           <label className="labelEdit" htmlFor="ID">
             Identificador
           </label>
@@ -80,9 +125,9 @@ function Editar() {
             type="text"
             name="bairro"
             id="Bairro"
-            placeholder="Digite o bairro..."
-           onChange={handleChange}
-           value={formData.bairro}
+            placeholder={occ.bairro}
+            onChange={handleChange}
+            value={formData.bairro}
           />
           <label className="labelEdit" htmlFor="Grupo">
             Grupo
@@ -92,14 +137,11 @@ function Editar() {
             type="text"
             name="grupo"
             id="grupo"
-            placeholder="Digite o grupo..."
+            placeholder={occ.grupo} 
             onChange={handleChange}
             value={formData.grupo}
           />
-          <label
-            className="labelEdit"
-            htmlFor="Descricao"
-          >
+          <label className="labelEdit" htmlFor="Descricao">
             Descrição
           </label>
           <input
@@ -107,7 +149,7 @@ function Editar() {
             type="text"
             name="descricao"
             id="Descricao"
-            placeholder="Digite a descrição..."
+            placeholder={occ.descricao}
             onChange={handleChange}
             value={formData.descricao}
           />
@@ -119,9 +161,9 @@ function Editar() {
             type="datetime-local"
             id="datetime"
             name="datetime"
-            placeholder="Digite a data..."
-           onChange={handleChange}
-           value={formData.datetime}
+            placeholder="{}"
+            onChange={handleChange}
+            value={formData.datetime}
           />
           <label className="labelEdit" htmlFor="Natureza">
             Natureza
@@ -131,9 +173,9 @@ function Editar() {
             type="text"
             name="natureza"
             id="Natureza"
-            placeholder="Digite a natureza..."
-           onChange={handleChange}
-           value={formData.natureza}
+            placeholder={occ.natureza}
+            onChange={handleChange}
+            value={formData.natureza}
           />
           <label className="labelEdit" htmlFor="Logradouro">
             Logradouro
@@ -143,9 +185,22 @@ function Editar() {
             type="text"
             name="logradouro"
             id="Logradouro"
-            placeholder="Digite o logradouro..."
+            placeholder={occ.logradouro}
             onChange={handleChange}
             value={formData.logradouro}
+          />
+
+          <label htmlFor="subgrupo" className="labelRegister">
+            SubGrupo
+          </label>
+          <input
+            type="text"
+            name="subgrupo"
+            id="subgrupo"
+            placeholder={occ.subgrupo}
+            value={formData.subgrupo}
+            onChange={handleChange}
+            className="inputRegister"
           />
 
           <button className="btnEdit" type="submit" data-button>
