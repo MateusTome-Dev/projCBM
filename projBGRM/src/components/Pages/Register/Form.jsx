@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./index.css";
+import logo from '/public/img/logo.png'
 import { toast } from "react-toastify";
 function Form() {
   // Declara o estado formData para armazenar os dados do formulário
@@ -161,6 +162,10 @@ function Form() {
             Enviar
           </button>
         </form>
+        <div className="logoRegister">
+            <img src={logo} alt="" />
+        </div>
+
       </div>
     </section>
   );

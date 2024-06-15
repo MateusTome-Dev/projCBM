@@ -58,5 +58,15 @@
     "email": "123@gmail.com",
     "password": "$2b$05$DM0wWG.c7nfx7dgrtENOvu/74iEbAi1yquI3weFvGE1HBQBnZ1xVq",
     "id": 12
+  },
+  {
+    "email": "mateustome@gmail.com",
+    "password": "$2b$05$qwynsjensVcml/oLX4/X7uygQLfVTyumATZ7tRLj7BPGymMQdZlby",
+    "id": 13
+  },
+  {
+    "email": "ronaldo@gmail.com",
+    "password": "$2b$05$EAuTdrlaQ9JVlq.yxMs1Du8QH181Qt5FWkR4c6W4ERmOC1RAav6Vq",
+    "id": 14
   }
 ]

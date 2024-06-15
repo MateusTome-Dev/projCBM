@@ -62,4 +62,14 @@
       right: 35px;
     }
   }
+  @media (max-width:450px) {
+    .overlay .linkNav {
+      font-size: 28px;
+    }
+    .overlay .closebtn {
+      font-size: 40px;
+      top: 15px;
+      right: 35px;
+    }
+  }
   

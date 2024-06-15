@@ -40,12 +40,14 @@ font-size: 14px;
 }
 .listContainer{
     width: 40%;
+    display: flex;
+    justify-content: center;
 }
 .listContainer ul{
-    justify-content: space-around;
-    width: 100%;
+    width: 40%;
     list-style-type: none;
     display: flex;
+    justify-content: space-around;
     color: white;
 }
 .listContainer ul .root{
@@ -73,9 +75,7 @@ font-size: 18px;
     .listContainer ul li a img{
         display: none;
     }
-    .br{
-        display: none;
-    }
+    
     .logo{
         display: none;
     }

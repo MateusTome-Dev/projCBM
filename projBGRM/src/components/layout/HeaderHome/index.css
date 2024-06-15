@@ -62,9 +62,7 @@ font-size: 14px;
 font-size: 18px;
 }
 @media(max-width:736px){
-    .brHome{
-        display: none;
-    }
+    
     .logoHome{
         display: none;
     }

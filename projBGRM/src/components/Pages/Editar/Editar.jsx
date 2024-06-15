@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import React, { useState , useEffect } from "react";
 import "./index.css";
+import logo from "/public/img/logo.png";
 import { toast } from "react-toastify";
 function Editar() {
 
@@ -113,7 +114,7 @@ function Editar() {
           data-form
           className="formEditar"
         >
-          <label className="labelEdit" htmlFor="ID">
+          <label className=" idEdit" htmlFor="ID">
             Identificador
           </label>
           <h1 id="h1Style">{params.id}</h1>
@@ -190,7 +191,7 @@ function Editar() {
             value={formData.logradouro}
           />
 
-          <label htmlFor="subgrupo" className="labelRegister">
+          <label htmlFor="subgrupo" className="labelEdit">
             SubGrupo
           </label>
           <input
@@ -200,13 +201,16 @@ function Editar() {
             placeholder={occ.subgrupo}
             value={formData.subgrupo}
             onChange={handleChange}
-            className="inputRegister"
+            className="inputEdit"
           />
 
           <button className="btnEdit" type="submit" data-button>
             Enviar
           </button>
         </form>
+        <div className="logoEdit">
+            <img src={logo} alt="" />
+        </div>
       </div>
     </section>
   );
