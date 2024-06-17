@@ -24,7 +24,7 @@ function SignIn() {
   // Função para lidar com o envio do formulário
   const handleSubmit = async (event) => {
     event.preventDefault(); // Previne o comportamento padrão do formulário de recarregar a página
-    fetch("http://localhost:3000/cadastro", {
+    fetch("http://localhost:3000//cadastro", {
       method: "POST", // Define o método HTTP como POST
       headers: {
         "Content-Type": "application/json", // Define o tipo de conteúdo como JSON

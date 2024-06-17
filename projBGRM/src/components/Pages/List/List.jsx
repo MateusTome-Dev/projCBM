@@ -13,7 +13,7 @@ function List() {
 
   // Função para buscar as ocorrências do servidor
   function fetchOcorrencias() {
-    fetch("http://localhost:3000/ocorrencia", {
+    fetch("http://localhost:3000//ocorrencia", {
       method: "GET", // Define o método HTTP como GET
       headers: {
         "Content-Type": "application/json", // Define o tipo de conteúdo como JSON
@@ -28,7 +28,7 @@ function List() {
 
   // Função para deletar uma ocorrência pelo ID
   function deleteOccurrence(id) {
-    fetch(`http://localhost:3000/ocorrencia/${id}`, {
+    fetch(`http://localhost:3000//ocorrencia/${id}`, {
       method: "DELETE", // Define o método HTTP como DELETE
     })
       .then((result) => result.json()) // Converte a resposta para JSON
@@ -52,7 +52,7 @@ function List() {
               <th className="listTh">GRUPO</th>
               <th className="listTh">SUBGRUPO</th>
               <th className="listTh">BAIRRO</th>
-              <th className="listTh">LAGRADOURO</th>
+              <th className="listTh">LOGRADOURO</th>
               <th className="listTh">ID</th>
               <th className="listTh">AÇÃO</th>
             </tr>

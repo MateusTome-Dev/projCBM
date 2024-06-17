@@ -8,41 +8,75 @@ function Editar() {
 
 
 
-
-  const params = useParams();
+  const params = useParams(); // Busca os parâmetros passados pela URL
+ 
+  // Define o estado formData para armazenar dados do formulário
   const [formData, setFormData] = useState({
-    descricao: "",
-    natureza: "",
-    grupo: "",
-    bairro: "",
-    logradouro: "",
-    datetime: "",
-    subgrupo: "",
+    natureza: '',
+    grupo:'',
+    bairro: '',
+    logradouro: '',
+    datetime: '',
+    subgrupo: '',
   });
-
+ 
+  // Define o estado de uma ocorrência para armazenar dados futuros
+  const [occ, setOcc] = useState({});
+ 
+  // Faz a requisição HTTP para obter os dados de uma ocorrência específica
+  useEffect(() => {
+    fetchOcorrencias();
+  }, []);
+ 
+  function fetchOcorrencias() {
+    fetch(`http://localhost:3000//ocorrencia/${params.id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((result) => result.json())
+      .then((data) => {
+        // Define o estado de occ com os dados trazidos pela API
+        setOcc(data);
+        // Preenche o formulário com os dados da ocorrência para edição
+        setFormData({
+          natureza: data.natureza,
+          grupo: data.grupo,
+          bairro: data.bairro,
+          logradouro: data.logradouro,
+          datetime: data.datetime,
+          subgrupo: data.subgrupo
+        })
+      })
+      .catch((erro) => console.error("Erro ao buscar dados:", erro));
+  }
+ 
+  // Componente para lidar com as mudanças de informações nos campos de entrada
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
-
+ 
+  // Componente para lidar com o envio dos dados para a API
   const handleSubmit = (event) => {
     event.preventDefault();
-
+   
+    // Verifica se todos os campos obrigatórios estão preenchidos
     if (
       formData.datetime === "" ||
       formData.bairro === "" ||
-      formData.descricao === "" ||
       formData.natureza === "" ||
       formData.grupo === "" ||
       formData.subgrupo === "" ||
       formData.logradouro === ""
     ) {
-      toast.info("Preencha os Campos");
+      toast.info("Preencha o campo editado");
       return;
     }
-
-    
-    fetch(`http://localhost:3000/ocorrencia/${params.id}`, {
+ 
+    // Faz a requisição PUT para atualizar a ocorrência existente
+    fetch(`http://localhost:3000//ocorrencia/${params.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -51,6 +85,7 @@ function Editar() {
     })
       .then((result) => {
         result.json();
+        // Lida com possíveis erros retornados pela requisição
         if (result.status === 404) {
           toast.error("Ocorrência Inexistente!");
         } else if (result.ok) {
@@ -66,41 +101,7 @@ function Editar() {
         console.error("Erro:", error);
         toast.error("Erro ao editar ocorrência");
       });
-
-   
- 
-  
-
-
   };
-
-
-  const [occ, setOcc] = useState([]);
-
-  // Usa o hook useEffect para buscar as ocorrências ao montar o componente
-  useEffect(() => {
-    fetchOcorrencias(); // Chama a função para buscar ocorrências
-  }, []);
-
-  // Função para buscar as ocorrências do servidor
-  function fetchOcorrencias() {
-    fetch(`http://localhost:3000/ocorrencia/${params.id}`, {
-      method: "GET", // Define o método HTTP como GET
-      headers: {
-        "Content-Type": "application/json", // Define o tipo de conteúdo como JSON
-      },
-    })
-      .then((result) => result.json()) // Converte a resposta para JSON
-      .then((data) => {
-        setOcc(data); // Define o estado occ com os dados recebidos
-      })
-      .catch((erro) => console.error("Erro ao buscar dados:", erro)); // Exibe erros no console
-  }
-
-
-
-
-
   return (
     <section className="editarContainer">
       <h1>
@@ -118,17 +119,17 @@ function Editar() {
             Identificador
           </label>
           <h1 id="h1Style">{params.id}</h1>
-          <label className="labelEdit" htmlFor="Bairro">
-            Bairro
+          <label className="labelEdit" htmlFor="Natureza">
+            Natureza
           </label>
           <input
             className="inputEdit"
             type="text"
-            name="bairro"
-            id="Bairro"
-            placeholder={occ.bairro}
+            name="natureza"
+            id="Natureza"
+            placeholder={occ.natureza}
             onChange={handleChange}
-            value={formData.bairro}
+            value={formData.natureza}
           />
           <label className="labelEdit" htmlFor="Grupo">
             Grupo
@@ -142,17 +143,17 @@ function Editar() {
             onChange={handleChange}
             value={formData.grupo}
           />
-          <label className="labelEdit" htmlFor="Descricao">
-            Descrição
+          <label htmlFor="subgrupo" className="labelEdit">
+            SubGrupo
           </label>
           <input
-            className="inputEdit"
             type="text"
-            name="descricao"
-            id="Descricao"
-            placeholder={occ.descricao}
+            name="subgrupo"
+            id="subgrupo"
+            placeholder={occ.subgrupo}
+            value={formData.subgrupo}
             onChange={handleChange}
-            value={formData.descricao}
+            className="inputEdit"
           />
           <label className="labelEdit" htmlFor="datetime">
             Selecione a data e hora:
@@ -166,17 +167,18 @@ function Editar() {
             onChange={handleChange}
             value={formData.datetime}
           />
-          <label className="labelEdit" htmlFor="Natureza">
-            Natureza
+          
+          <label className="labelEdit" htmlFor="Bairro">
+            Bairro
           </label>
           <input
             className="inputEdit"
             type="text"
-            name="natureza"
-            id="Natureza"
-            placeholder={occ.natureza}
+            name="bairro"
+            id="Bairro"
+            placeholder={occ.bairro}
             onChange={handleChange}
-            value={formData.natureza}
+            value={formData.bairro}
           />
           <label className="labelEdit" htmlFor="Logradouro">
             Logradouro
@@ -191,18 +193,7 @@ function Editar() {
             value={formData.logradouro}
           />
 
-          <label htmlFor="subgrupo" className="labelEdit">
-            SubGrupo
-          </label>
-          <input
-            type="text"
-            name="subgrupo"
-            id="subgrupo"
-            placeholder={occ.subgrupo}
-            value={formData.subgrupo}
-            onChange={handleChange}
-            className="inputEdit"
-          />
+          
 
           <button className="btnEdit" type="submit" data-button>
             Enviar

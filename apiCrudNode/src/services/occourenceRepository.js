@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 
 // Define o nome do arquivo e o caminho do arquivo com base no diretório atual
-const fileName = "ocorrencias.json";
+const fileName = "occourence.json";
 const filePath = path.join(__dirname, "..", "database", fileName);
 
 // Classe que define métodos para interagir com o arquivo de ocorrências

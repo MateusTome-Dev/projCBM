@@ -3,65 +3,63 @@ import "./index.css";
 import logo from '/public/img/logo.png'
 import { toast } from "react-toastify";
 function Form() {
-  // Declara o estado formData para armazenar os dados do formulário
-  const [formData, setFormData] = useState({
-    descricao: "",
-    natureza: "",
-    grupo: "",
-    subgrupo: "",
-    bairro: "",
-    logradouro: "",
-    datetime: "",
-  });
+ // Definie  o estado de formData para armazenar dados futuros
+ const [formData, setFormData] = useState({
+  natureza: "",
+  grupo: "",
+  subgrupo: "",
+  bairro: "",
+  logradouro: "",
+  datetime: "",
+});
 
-  // Função para lidar com a mudança de valor nos campos do formulário
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-  };
+//Componente para lidar com as mudanças de informações nos campos de entrada
+const handleChange = (event) => {
+  const { name, value } = event.target;
+  setFormData({ ...formData, [name]: value});
+};
 
-  // Função para lidar com o envio do formulário
-  const handleSubmit = (event) => {
-    event.preventDefault(); // Previne o comportamento padrão do formulário de recarregar a página
-    
-    if(formData.datetime === '' || formData.bairro === '' || formData.descricao === ''|| formData.natureza === '' 
-      || formData.grupo === '' || formData.subgrupo === '' || formData.logradouro === ''){
-        toast.info('Preencha todos os campos')
-        return
-      }
+//Componente de envio de dados para Api
+const handleSubmit = (event) => {
+  event.preventDefault(); // Previne o comportamento padrão do formulário de recarregar a página
+ 
+  //Verificação dos campos
+  if(formData.datetime === '' || formData.bairro === '' || formData.natureza === ''
+    || formData.grupo === '' || formData.subgrupo === '' || formData.logradouro === ''){
+      toast.info('Preencha todos os campos')
+      return
+    }
 
 
-
-    // Faz uma requisição POST para a URL de ocorrências
-    fetch("http://localhost:3000/ocorrencia", {
-      method: "POST", // Define o método HTTP como POST
-      headers: {
-        "Content-Type": "application/json", // Define o tipo de conteúdo como JSON
-      },
-      body: JSON.stringify(formData), // Converte os dados do formulário para JSON
-    })
-      .then((response) => response.json()) // Converte a resposta para JSON
-      .then((data) => {
-        console.log(data); // Exibe a resposta no console
-        toast.success("Ocorrência registrada com sucesso!"); // Exibe um alerta indicando sucesso no registro
-        // Reinicia os campos do formulário
-        setFormData({
-          descricao: "",
-          natureza: "",
-          grupo: "",
-          subgrupo: "",
-          bairro: "",
-          logradouro: "",
-          datetime: "",
-        });
-      })
-      .catch((error) => {
-        console.error("Erro ao registrar ocorrência:", error); // Exibe o erro no console
-        toast.error(
-          "Ocorreu um erro ao registrar a ocorrência. Por favor, tente novamente."
-        );
+    //EndPoint da Api
+    fetch("http://localhost:3000//ocorrencia", {
+    method: "POST", // Define o método HTTP como POST
+    headers: {
+      "Content-Type": "application/json", // Define o tipo de conteúdo como JSON
+    },
+    body: JSON.stringify(formData), // Converte os dados do formulário para JSON
+  })
+    .then((response) => response.json()) // Converte a resposta para JSON
+    .then((data) => {
+      console.log(data); // Exibe a resposta no console
+      toast.success("Ocorrência registrada com sucesso!"); // Exibe um alerta indicando sucesso no registro
+      // Reinicia os campos do formulário
+      setFormData({
+        natureza: "",
+        grupo: "",
+        subgrupo: "",
+        bairro: "",
+        logradouro: "",
+        datetime: "",
       });
-  };
+    })
+    .catch((error) => {
+      console.error("Erro ao registrar ocorrência:", error); // Exibe o erro no console
+      toast.error(
+        "Ocorreu um erro ao registrar a ocorrência. Por favor, tente novamente."
+      );
+    });
+};
 
   return (
     <section className="registerContainer">
@@ -73,15 +71,15 @@ function Form() {
           data-form
           className="formRegister"
         >
-          <label htmlFor="bairro" className="labelRegister">
-            Bairro
+          <label htmlFor="natureza" className="labelRegister">
+            Natureza
           </label>
           <input
             type="text"
-            name="bairro"
-            id="bairro"
-            placeholder="Digite o bairro..."
-            value={formData.bairro}
+            name="natureza"
+            id="natureza"
+            placeholder="Digite a natureza..."
+            value={formData.natureza}
             onChange={handleChange}
             className="inputRegister"
           />
@@ -97,19 +95,18 @@ function Form() {
             onChange={handleChange}
             className="inputRegister"
           />
-          <label htmlFor="descricao" className="labelRegister">
-            Descrição
+          <label htmlFor="subgrupo" className="labelRegister">
+            SubGrupo
           </label>
           <input
             type="text"
-            name="descricao"
-            id="descricao"
-            placeholder="Digite a descrição..."
-            value={formData.descricao}
+            name="subgrupo"
+            id="subgrupo"
+            placeholder="Digite o SubGrupo..."
+            value={formData.subgrupo}
             onChange={handleChange}
             className="inputRegister"
           />
-
           <label htmlFor="datetime" className="labelRegister">
             Selecione a data e hora:
           </label>
@@ -121,15 +118,15 @@ function Form() {
             onChange={handleChange}
             className="inputRegister"
           />
-          <label htmlFor="natureza" className="labelRegister">
-            Natureza
+          <label htmlFor="bairro" className="labelRegister">
+            Bairro
           </label>
           <input
             type="text"
-            name="natureza"
-            id="natureza"
-            placeholder="Digite a natureza..."
-            value={formData.natureza}
+            name="bairro"
+            id="bairro"
+            placeholder="Digite o bairro..."
+            value={formData.bairro}
             onChange={handleChange}
             className="inputRegister"
           />
@@ -145,18 +142,7 @@ function Form() {
             onChange={handleChange}
             className="inputRegister"
           />
-          <label htmlFor="subgrupo" className="labelRegister">
-            SubGrupo
-          </label>
-          <input
-            type="text"
-            name="subgrupo"
-            id="subgrupo"
-            placeholder="Digite o SubGrupo..."
-            value={formData.subgrupo}
-            onChange={handleChange}
-            className="inputRegister"
-          />
+          
 
           <button type="submit" data-button className="btnRegister">
             Enviar

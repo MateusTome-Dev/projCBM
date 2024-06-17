@@ -29,7 +29,7 @@ function SignIn() {
     }
 
     // Faz uma requisição POST para a URL de login
-    fetch("http://localhost:3000/login", {
+    fetch("http://localhost:3000//login", {
       method: "POST", // Define o método HTTP como POST
       headers: {
         "Content-Type": "application/json", // Define o tipo de conteúdo como JSON
